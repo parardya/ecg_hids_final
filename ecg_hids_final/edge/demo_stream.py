@@ -18,7 +18,8 @@ import numpy as np
 
 from synthetic_ecg import generate_synthetic_ecg
 from feature_extractor import extract_features
-from logger import make_log_entry, write_log_entry, FULL_LOG_PATH
+from logger import make_log_entry, write_log_entry
+from config import FULL_LOG_PATH
 import attacks
 
 SAMPLING_RATE = 250
