@@ -37,3 +37,7 @@
 {"timestamp": "2026-08-28T16:30:44.438203+00:00", "true_label": "firmware_tampering", "watchdog_alerts": [], "ml_prediction": "normal", "ml_confidence": 0.7451482863018387, "sdn_action": "none"}
 {"timestamp": "2026-08-28T16:30:49.585486+00:00", "true_label": "normal", "watchdog_alerts": [], "ml_prediction": "normal", "ml_confidence": 0.7131709773046612, "sdn_action": "none"}
 {"timestamp": "2026-08-28T16:30:54.617494+00:00", "true_label": "replay_attack", "watchdog_alerts": [], "ml_prediction": "replay_attack", "ml_confidence": 0.79, "sdn_action": "rate_limit"}
+{"timestamp": "2026-08-28T16:30:59.767530+00:00", "true_label": "data_tampering", "watchdog_alerts": [], "ml_prediction": "data_tampering", "ml_confidence": 0.99, "sdn_action": "drop"}
+{"timestamp": "2026-08-28T16:31:04.908320+00:00", "true_label": "normal", "watchdog_alerts": [], "ml_prediction": "normal", "ml_confidence": 0.7675258992657328, "sdn_action": "none"}
+{"timestamp": "2026-08-28T16:31:10.035510+00:00", "true_label": "normal", "watchdog_alerts": [], "ml_prediction": "normal", "ml_confidence": 0.6902378665030651, "sdn_action": "none"}
+{"timestamp": "2026-08-28T16:31:15.171868+00:00", "true_label": "firmware_tampering", "watchdog_alerts": [], "ml_prediction": "firmware_tampering", "ml_confidence": 0.9923914826835966, "sdn_action": "drop"}
