@@ -6,16 +6,19 @@ by setting an environment variable of the same name, so you never have
 to edit code to change a URL or threshold -- just set env vars.
 
 Example (Linux/Mac):
-    export RENDER_API_URL="https://your-app.onrender.com"
+    export RENDER_API_URL="https://cloud-ml-api.onrender.com"
 
 Example (Windows PowerShell):
-    $env:RENDER_API_URL="https://your-app.onrender.com"
+    $env:RENDER_API_URL="https://cloud-ml-api.onrender.com"
 """
 
 import os
 
 # --- Render ML API (the cloud detection service) ---
-RENDER_API_URL = os.environ.get("RENDER_API_URL", "http://localhost:6000")
+RENDER_API_URL = os.environ.get(
+    "RENDER_API_URL",
+    "https://cloud-ml-api.onrender.com",
+)
 RENDER_API_TIMEOUT_SEC = float(os.environ.get("RENDER_API_TIMEOUT_SEC", "5"))
 
 # --- SDN Gateway (network enforcement service, per team contract) ---

@@ -97,7 +97,7 @@ in the code:
 
 | Variable | Purpose | Default |
 |---|---|---|
-| `RENDER_API_URL` | Where the cloud ML service lives | `http://localhost:6000` |
+| `RENDER_API_URL` | Where the cloud ML service lives | `https://cloud-ml-api.onrender.com` |
 | `SDN_GATEWAY_URL` | Where the SDN gateway lives | `http://10.0.0.1:5000` |
 | `DROP_CONFIDENCE_THRESHOLD` | Confidence above which to quarantine | `0.8` |
 | `RATE_LIMIT_CONFIDENCE_THRESHOLD` | Confidence above which to rate-limit | `0.5` |

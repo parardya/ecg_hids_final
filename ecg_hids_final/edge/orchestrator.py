@@ -105,10 +105,11 @@ def process_entry(entry):
     return result
 
 
-def tail_log_file(path):
-    """Yields new lines as they're appended to the file (like tail -f)."""
+def tail_log_file(path, start_at_end=False):
+    """Yields existing and newly appended lines from a JSONL file."""
     with open(path, "r") as f:
-        f.seek(0, os.SEEK_END)
+        if start_at_end:
+            f.seek(0, os.SEEK_END)
         while True:
             line = f.readline()
             if not line:
@@ -119,14 +120,21 @@ def tail_log_file(path):
 
 def run():
     logger.info("Starting orchestrator...")
-    logger.info(f"Watching: {config.FULL_LOG_PATH}")
+    logger.info(f"Watching: {os.path.abspath(config.FULL_LOG_PATH)}")
     logger.info(f"Render ML API: {config.RENDER_API_URL}")
     logger.info(f"SDN Gateway: {config.SDN_GATEWAY_URL}")
+    logger.info(
+        "Processing existing entries: %s",
+        config.PROCESS_EXISTING_ENTRIES,
+    )
 
     if not os.path.exists(config.FULL_LOG_PATH):
         open(config.FULL_LOG_PATH, "a").close()
 
-    for line in tail_log_file(config.FULL_LOG_PATH):
+    for line in tail_log_file(
+        config.FULL_LOG_PATH,
+        start_at_end=not config.PROCESS_EXISTING_ENTRIES,
+    ):
         if not line:
             continue
         try:
@@ -135,7 +143,12 @@ def run():
             logger.warning("Skipping malformed log line")
             continue
 
-        process_entry(entry)
+        result = process_entry(entry)
+        logger.info(
+            "Processed entry: ML=%s confidence=%.2f%%",
+            result.get("ml_prediction"),
+            (result.get("ml_confidence") or 0.0) * 100,
+        )
 
 
 if __name__ == "__main__":
